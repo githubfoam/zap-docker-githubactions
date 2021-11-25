@@ -1,0 +1,44 @@
+name: "ZAP - Full Scan"
+
+
+on:
+  push:
+    branches: [ test ]
+  schedule:
+      - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month 
+
+
+jobs:
+
+# https://www.zaproxy.org/docs/docker/full-scan/
+ ubuntu-latest-zap-Full-job:
+    name: "ZAP - Full Scan"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: "os fingerprinting"
+      run: hostnamectl status  
+    - name: "ZAP - Full Scan"
+      run: | 
+        # docker run -t owasp/zap2docker-stable zap-baseline.py -t http://testphp.vulnweb.com
+        docker run -t owasp/zap2docker-stable zap-full-scan.py -t http://testphp.vulnweb.com
+        
+# https://www.zaproxy.org/docs/docker/full-scan/
+ ubuntu-latest-zap-Full-report-job:
+    name: "ZAP - Full Scan report"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: "os fingerprinting"
+      run: hostnamectl status  
+    - name: "ZAP - Full Scan report"
+      run: | 
+        docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-full-scan.py \
+        -t https://www.example.com -g gen.conf -r testreport.html
+        
+
+
+
+
+
+
