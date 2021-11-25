@@ -21,13 +21,13 @@ jobs:
     - name: "ZAP - Baseline Scan"
       run: | 
         # Error: Process completed with exit code 2.
-        # docker run -t owasp/zap2docker-stable \
-        # zap-baseline.py -t http://testphp.vulnweb.com
+        docker run -t owasp/zap2docker-stable \
+          zap-baseline.py -t http://testphp.vulnweb.com
         # Error: Process completed with exit code 2.
         # docker run -t owasp/zap2docker-stable \
         # zap-baseline.py -t http://testphp.vulnweb.com >/dev/null  
-        # Error: Process completed with exit code 2.      
-        docker run -t --rm owasp/zap2docker-stable sh -c "zap-baseline.py -t http://testphp.vulnweb.com 2>/dev/null"
+        # Error: Process completed with exit code 3     
+        # docker run -t --rm owasp/zap2docker-stable sh -c "zap-baseline.py -t http://testphp.vulnweb.com 2>/dev/null"
 
 
 # https://www.zaproxy.org/docs/docker/baseline-scan/
@@ -53,7 +53,7 @@ jobs:
       run: hostnamectl status  
     - name: "ZAP - Baseline Scan hooks"
       run: | 
-        docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable \
+        sudo docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable \
           zap-baseline.py -t https://www.example.com -g gen.conf \
           -r testreport.html --hook=/zap/wrk/my-hooks.py
 
