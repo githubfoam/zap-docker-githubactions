@@ -41,7 +41,7 @@ jobs:
     - name: "ZAP - Baseline Scan report"
       run: | 
         docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py \
-          -t https://www.example.com -g gen.conf -r testreport.html>/dev/null
+          -t https://www.example.com -g gen.conf -r testreport.html
 
 # https://www.zaproxy.org/docs/docker/scan-hooks/
  ubuntu-latest-zap-Baseline-hooks-job:
@@ -53,6 +53,8 @@ jobs:
       run: hostnamectl status  
     - name: "ZAP - Baseline Scan hooks"
       run: | 
+        # Error: Process completed with exit code 3.
+        # PermissionError: [Errno 13] Permission denied: '/zap/wrk/gen.conf'
         sudo docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable \
           zap-baseline.py -t https://www.example.com -g gen.conf \
           -r testreport.html --hook=/zap/wrk/my-hooks.py
