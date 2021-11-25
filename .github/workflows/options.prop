@@ -1,0 +1,6 @@
+  -config formhandler.fields.field\\(0\\).fieldId=username \  
+  -config formhandler.fields.field\\(0\\).value=test@example.com \  
+  -config formhandler.fields.field\\(0\\).enabled=true \  
+  -config formhandler.fields.field\\(1\\).fieldId=phone \  
+  -config formhandler.fields.field\\(1\\).value=012345678 \  
+  -config formhandler.fields.field\\(1\\).enabled=true  

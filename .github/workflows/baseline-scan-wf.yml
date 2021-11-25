@@ -25,7 +25,8 @@ jobs:
         # zap-baseline.py -t http://testphp.vulnweb.com
         # Error: Process completed with exit code 2.
         # docker run -t owasp/zap2docker-stable \
-        # zap-baseline.py -t http://testphp.vulnweb.com >/dev/null        
+        # zap-baseline.py -t http://testphp.vulnweb.com >/dev/null  
+        # Error: Process completed with exit code 2.      
         docker run -t --rm owasp/zap2docker-stable sh -c "zap-baseline.py -t http://testphp.vulnweb.com 2>/dev/null"
 
 
