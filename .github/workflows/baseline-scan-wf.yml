@@ -43,6 +43,18 @@ jobs:
         docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py \
           -t https://www.example.com -g gen.conf -r testreport.html>/dev/null
 
-
+# https://www.zaproxy.org/docs/docker/scan-hooks/
+ ubuntu-latest-zap-Baseline-hooks-job:
+    name: "ZAP - Baseline Scan hooks"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: "os fingerprinting"
+      run: hostnamectl status  
+    - name: "ZAP - Baseline Scan hooks"
+      run: | 
+        docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable \
+          zap-baseline.py -t https://www.example.com -g gen.conf \
+          -r testreport.html --hook=/zap/wrk/my-hooks.py
 
 
