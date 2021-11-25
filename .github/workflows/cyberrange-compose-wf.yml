@@ -1,4 +1,4 @@
-name: "kali compose cyberrange CI workflow"
+name: "cyberrange CI workflow"
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 jobs:
 
   ubuntu-latest-job:
-    name: "build kali linux compose ubuntu latest"
+    name: "build cyberrange ubuntu latest"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
