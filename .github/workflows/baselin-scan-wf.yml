@@ -1,0 +1,31 @@
+name: "ZAP - Baseline Scan"
+
+
+on:
+  push:
+    branches: [ test ]
+  schedule:
+      - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month 
+
+
+jobs:
+
+# https://www.zaproxy.org/docs/docker/baseline-scan/
+ ubuntu-latest-zap-Baseline-job:
+    name: "ZAP - Baseline Scan"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: "os fingerprinting"
+      run: hostnamectl status  
+    - name: "ZAP - Baseline Scan"
+      run: | 
+        docker run -t owasp/zap2docker-stable zap-baseline.py \
+        -t http://testphp.vulnweb.com
+        
+
+
+
+
+
+
