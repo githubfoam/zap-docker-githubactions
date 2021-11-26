@@ -26,4 +26,3 @@ jobs:
         sudo docker-compose --file dockerfiles/kalilinux/kali.yml up -d
         sudo docker-compose --file dockerfiles/kalilinux/kali.yml ps
         docker network ls
-        docker exec kali /bin/bash sh -c "nmap -O -A -sV 192.168.35.5"
