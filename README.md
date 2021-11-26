@@ -1,4 +1,8 @@
 # zap-docker-githubactions
+
+[![ZAP - Baseline Scan](https://github.com/githubfoam/zap-docker-githubactions/actions/workflows/baseline-scan-wf.yml/badge.svg?branch=main)](https://github.com/githubfoam/zap-docker-githubactions/actions/workflows/baseline-scan-wf.yml)  
+[![ZAP - Full Scan](https://github.com/githubfoam/zap-docker-githubactions/actions/workflows/full-scan-wf.yml/badge.svg?branch=main)](https://github.com/githubfoam/zap-docker-githubactions/actions/workflows/full-scan-wf.yml)  
+[![cyberrange CI workflow](https://github.com/githubfoam/zap-docker-githubactions/actions/workflows/cyberrange-compose-wf.yml/badge.svg?branch=main)](https://github.com/githubfoam/zap-docker-githubactions/actions/workflows/cyberrange-compose-wf.yml)  
 ~~~
 https://www.zaproxy.org/
 A GitHub Action for running the OWASP ZAP Full Scan to perform Dynamic Application Security Testing (DAST).
